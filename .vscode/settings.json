@@ -1,0 +1,13 @@
+{
+        "makefile.launchConfigurations": [
+                {
+                        "cwd": "/home/kim/pp/turtle_graphics",
+                        "binaryPath": "/home/kim/pp/turtle_graphics/turtle",
+                        "binaryArgs": []
+                }
+        ],
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[javascript]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+}
