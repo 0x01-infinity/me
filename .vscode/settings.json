@@ -2,7 +2,7 @@
         "makefile.launchConfigurations": [
                 {
                         "cwd": "/home/kim/pp/turtle_graphics",
-                        "binaryPath": "/home/kim/pp/turtle_graphics/turtle",
+                        "binaryPath": "/home/kim/pp/turtle_graphics/bin/graphics",
                         "binaryArgs": []
                 }
         ],
