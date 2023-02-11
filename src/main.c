@@ -1,13 +1,12 @@
 #include "main.h"
 #include "turtle.h"
+#include "canvas.h"
 
 int main(void)
 {
-	char floor[FLOOR_SIZE][FLOOR_SIZE];
 	size_t command;
 	turtle_t *turtle = Turtle_new();
-
-	initialize(floor);
+	canvas_t *canvas = new_canvas(FLOOR_SIZE, FLOOR_SIZE);
 
 	print_pos(turtle->pos, turtle->direction);
 	puts("\nEnter commands");
@@ -16,12 +15,13 @@ int main(void)
 
 	while (command != 9)
 	{
-		executeCommand(command, turtle, floor);
+		executeCommand(command, turtle, canvas);
 
 		print_pos(turtle->pos, turtle->direction);
 		scanf("%lu", &command);
 	}
 	free(turtle);
+	destroy_canvas(canvas);
 
 	return (0);
 }

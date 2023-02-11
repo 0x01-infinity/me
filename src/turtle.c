@@ -1,20 +1,36 @@
+#include <stdio.h>
 #include "turtle.h"
 
-void move(size_t num, turtle_t *turtle, char floor[][FLOOR_SIZE])
+turtle_t *Turtle_new(void)
+{
+	turtle_t *turtle = malloc(sizeof(turtle_t));
+
+	if (!turtle)
+		die("Failed to allocate memory for Turtle");
+	
+	turtle->pen = 0;
+	turtle->pos[0] = 0;
+	turtle->pos[1] = 0;
+	turtle->direction = RIGHT;
+
+	return (turtle);
+}
+
+void move(size_t num, turtle_t *turtle, char **floor)
 {
 	switch (turtle->direction)
 	{
 		case RIGHT:
-			move_right(num, turtle, floor);
+			move_outwards(num, Y, turtle, floor);
 			break;
 		case LEFT:
-			move_left(num, turtle, floor);
+			move_inwards(num, Y, turtle, floor);
 			break;
 		case UP:
-			move_up(num, turtle, floor);
+			move_inwards(num, X, turtle, floor);
 			break;
 		case DOWN:
-			move_down(num, turtle, floor);
+			move_outwards(num, X, turtle, floor);
 			break;
 	}
 }
@@ -64,17 +80,16 @@ void pen_down(turtle_t *turtle)
         turtle->pen = 1;
 }
 
-turtle_t *Turtle_new(void)
+void print_pos(size_t *pos, DIRECTION direction)
 {
-	turtle_t *turtle = malloc(sizeof(turtle_t));
+	printf("\nCurrently at pos: [%lu, %lu]\n", pos[0] + 1, pos[1] + 1);
 
-	if (!turtle)
-		die("Failed to allocate memory for Turtle");
-	
-	turtle->pen = 0;
-	turtle->pos[0] = 0;
-	turtle->pos[1] = 0;
-	turtle->direction = RIGHT;
-
-	return (turtle);
+	if (direction == RIGHT)
+		puts("Pointing right ➡️");
+	if (direction == LEFT)
+		puts("Pointing left ⬅️");
+	if (direction == UP)
+		puts("Pointing up ⬆️");
+	if (direction == DOWN)
+		puts("Pointing down ⬇️");
 }

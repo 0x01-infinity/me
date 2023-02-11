@@ -6,6 +6,8 @@
 
 #define FLOOR_SIZE 50
 
+typedef enum plane {X, Y} PLANE;
+
 typedef enum direction
 {
 	RIGHT,
@@ -27,21 +29,13 @@ void turn_right(turtle_t *turtle);
 void turn_left(turtle_t *turtle);
 void turn_opposite(turtle_t *turtle);
 
-void move(size_t num, turtle_t *turtle, char floor[][FLOOR_SIZE]);
-void move_right(size_t num, turtle_t *turtle, char floor[][FLOOR_SIZE]);
-void move_down(size_t num, turtle_t *turtle, char floor[][FLOOR_SIZE]);
-void move_left(size_t num, turtle_t *turtle, char floor[][FLOOR_SIZE]);
-void move_up(size_t num, turtle_t *turtle, char floor[][FLOOR_SIZE]);
+void move(size_t num, turtle_t *turtle, char **floor);
+void move_outwards(size_t num, PLANE plane, turtle_t *turtle, char **floor);
+void move_inwards(size_t num, PLANE plane, turtle_t *turtle, char **floor);
 
 void pen_up(turtle_t *turtle);
 void pen_down(turtle_t *turtle);
 
 void print_pos(size_t *pos, DIRECTION direction);
-size_t unsigned_sub(size_t a, size_t b);
-size_t unsigned_add(size_t a, size_t b);
-void positive_bound(size_t point, size_t *pos);
-size_t negative_bound(size_t point, size_t b, size_t *pos);
-void die(const char *message);
-
 
 #endif

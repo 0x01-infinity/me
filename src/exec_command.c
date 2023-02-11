@@ -1,7 +1,8 @@
 #include "main.h"
 #include "turtle.h"
+#include "canvas.h"
 
-void executeCommand(size_t command, turtle_t *turtle, char floor[][FLOOR_SIZE])
+void executeCommand(size_t command, turtle_t *turtle, canvas_t *canvas)
 {
 	size_t num;
 
@@ -21,10 +22,13 @@ void executeCommand(size_t command, turtle_t *turtle, char floor[][FLOOR_SIZE])
 			break;
 		case 5:
 			scanf(",%lu", &num);
-			move(num, turtle, floor);
+			move(num, turtle, canvas->floor);
 			break;
 		case 6:
-			print_floor(floor);
+			print_canvas(canvas);
+			break;
+		case 7:
+			turn_opposite(turtle);
 			break;
 	}
 }

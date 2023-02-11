@@ -27,14 +27,14 @@ void positive_bound(size_t point, size_t *pos)
 {
 	if (point >= FLOOR_SIZE)
 	{
-		printf("Out of the bounds of floor (%u, %u)\n", FLOOR_SIZE - 1, FLOOR_SIZE - 1);
+		printf("Out of the bounds of floor (%u, %u)\n", FLOOR_SIZE, FLOOR_SIZE);
 		
 		if (pos[0] >= FLOOR_SIZE)
 			pos[0] = FLOOR_SIZE - 1;
 		else if (pos[1] >= FLOOR_SIZE)
 			pos[1] = FLOOR_SIZE - 1;
 		
-		printf("Position adjusted to [%lu, %lu]\n", pos[0], pos[1]);
+		printf("Position adjusted to [%lu, %lu]\n", pos[0] + 1, pos[1] + 1);
 	}
 }
 
@@ -42,14 +42,14 @@ size_t negative_bound(size_t point, size_t b, size_t *pos)
 {
 	if (point < b)
 	{
-		puts("\nNegative index detected. Out of bounds of floor. Least index allowed is 0.");
+		puts("\nNegative index detected. Out of bounds of floor. Least index allowed is 1.");
 
 		if ((int) (pos[0] - b) < 0)
 			pos[0] = 0;
 		else if ((int) (pos[1] - b) < 0)
 			pos[1] = 0;
 		
-		printf("Position adjusted to [%lu, %lu]\n", pos[0], pos[1]);
+		printf("Position adjusted to [%lu, %lu]\n", pos[0] + 1, pos[1] + 1);
 		return (1);
 	}
 
