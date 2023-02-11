@@ -5,9 +5,5 @@
                         "binaryPath": "/home/kim/pp/turtle_graphics/bin/graphics",
                         "binaryArgs": []
                 }
-        ],
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "[javascript]": {
-                "editor.defaultFormatter": "esbenp.prettier-vscode"
-        }
+        ]
 }
