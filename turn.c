@@ -1,3 +1,4 @@
+/*
 #include "main.h"
 
 void turn_right(DIRECTION *direction)
@@ -25,3 +26,4 @@ void pen_down(size_t *pen)
 {
         *pen = 1;
 }
+*/

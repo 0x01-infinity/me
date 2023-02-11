@@ -4,32 +4,14 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "turtle.h"
 
 #define FLOOR_SIZE 50
 
-typedef enum direction
-{
-	RIGHT,
-	DOWN,
-	LEFT,
-	UP
-} DIRECTION;
-
-void executeCommand(size_t command, size_t *pen, size_t *pos, DIRECTION *direction, char floor[][FLOOR_SIZE]);
-
-void pen_up(size_t *pen);
-void pen_down(size_t *pen);
-
-void turn_right(DIRECTION *direction);
-void turn_left(DIRECTION *direction);
+void executeCommand(size_t command, turtle_t *turtle, char floor[][FLOOR_SIZE]);
 
 void (*move_forward(DIRECTION direction))(size_t, size_t, size_t *, char [][FLOOR_SIZE]);
-void move_right(size_t pen, size_t num, size_t *pos, char floor[][FLOOR_SIZE]);
-void move_down(size_t pen, size_t num, size_t *pos, char floor[][FLOOR_SIZE]);
-void move_left(size_t pen, size_t num, size_t *pos, char floor[][FLOOR_SIZE]);
-void move_up(size_t pen, size_t num, size_t *pos, char floor[][FLOOR_SIZE]);
 
-void print_pos(size_t *pos, DIRECTION direction);
 void print_floor(char floor[][FLOOR_SIZE]);
 void initialize(char floor[][FLOOR_SIZE]);
 

@@ -1,26 +1,27 @@
 #include "main.h"
+#include "turtle.h"
 
 int main(void)
 {
 	char floor[FLOOR_SIZE][FLOOR_SIZE];
-	size_t pen = 0, pos[2] = {0, 0};
 	size_t command;
-	DIRECTION direction = RIGHT;
+	turtle_t *turtle = Turtle_new();
 
 	initialize(floor);
 
-	print_pos(pos, direction);
+	print_pos(turtle->pos, turtle->direction);
 	puts("\nEnter commands");
 
 	scanf("%lu", &command);
 
 	while (command != 9)
 	{
-		executeCommand(command, &pen, pos, &direction, floor);
+		executeCommand(command, turtle, floor);
 
-		print_pos(pos, direction);
+		print_pos(turtle->pos, turtle->direction);
 		scanf("%lu", &command);
 	}
+	free(turtle);
 
 	return (0);
 }

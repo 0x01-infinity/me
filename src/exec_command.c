@@ -1,28 +1,27 @@
 #include "main.h"
+#include "turtle.h"
 
-void executeCommand(size_t command, size_t *pen, size_t *pos, DIRECTION *direction, char floor[][FLOOR_SIZE])
+void executeCommand(size_t command, turtle_t *turtle, char floor[][FLOOR_SIZE])
 {
-	void (*move)(size_t, size_t, size_t *, char [][FLOOR_SIZE]);
 	size_t num;
 
 	switch (command)
 	{
 		case 1:
-			pen_up(pen);
+			pen_up(turtle);
 			break;
 		case 2:
-			pen_down(pen);
+			pen_down(turtle);
 			break;
 		case 3:
-			turn_right(direction);
+			turn_right(turtle);
 			break;
 		case 4:
-			turn_left(direction);
+			turn_left(turtle);
 			break;
 		case 5:
 			scanf(",%lu", &num);
-			move = move_forward(*direction);
-			move(*pen, num, pos, floor);
+			move(num, turtle, floor);
 			break;
 		case 6:
 			print_floor(floor);

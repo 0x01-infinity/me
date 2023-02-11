@@ -1,0 +1,10 @@
+{
+        "C_Cpp.errorSquiggles": "disabled",
+        "makefile.launchConfigurations": [
+                {
+                        "cwd": "/home/kim/pp/turtle_graphics/bin",
+                        "binaryPath": "/home/kim/pp/turtle_graphics/bin/graphics",
+                        "binaryArgs": []
+                }
+        ]
+}
