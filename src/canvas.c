@@ -52,8 +52,25 @@ void print_canvas(canvas_t *canvas)
 	{
 		for (j = 0; j < canvas->cols; j++)
 			putchar(canvas->floor[i][j]);
+		printf("%lu", i);
 		putchar('\n');
 	}
+}
+
+void fill_canvas(canvas_t *canvas, char c)
+{
+	size_t i, j;
+
+	for (i = 0; i < canvas->rows; i++)
+	{
+		for (j = 0; j < canvas->cols; j++)
+			canvas->floor[i][j] = c;
+	}
+}
+
+void clear_canvas(canvas_t *canvas)
+{
+	fill_canvas(canvas, '\0');
 }
 
 void destroy_canvas(canvas_t *canvas)

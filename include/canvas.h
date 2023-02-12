@@ -16,8 +16,10 @@ char **new_floor(size_t row, size_t col);
 void destroy_canvas(canvas_t *canvas);
 
 void print_canvas(canvas_t *canvas);
+void fill_canvas(canvas_t *canvas, char c);
 void clear_canvas(canvas_t *canvas);
-void write_canvas(FILE *iput, canvas_t *canvas);
+
+void write_canvas(FILE *input, canvas_t *canvas);
 canvas_t *load_canvas(FILE *input);
 canvas_t *resize_canvas(canvas_t *canvas, size_t new_size);
 

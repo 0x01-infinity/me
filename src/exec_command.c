@@ -4,10 +4,14 @@
 
 void executeCommand(size_t command, turtle_t *turtle, canvas_t *canvas)
 {
-	size_t num;
+	size_t num, row, col;
+	char c;
 
 	switch (command)
 	{
+		case 0:
+			clear_canvas(canvas);
+			break;
 		case 1:
 			pen_up(turtle);
 			break;
@@ -22,7 +26,7 @@ void executeCommand(size_t command, turtle_t *turtle, canvas_t *canvas)
 			break;
 		case 5:
 			scanf(",%lu", &num);
-			move(num, turtle, canvas->floor);
+			move(num, turtle, canvas);
 			break;
 		case 6:
 			print_canvas(canvas);
@@ -30,10 +34,21 @@ void executeCommand(size_t command, turtle_t *turtle, canvas_t *canvas)
 		case 7:
 			turn_opposite(turtle);
 			break;
+		case 8:
+			printf("%s", "Enter character to fill: ");
+			flush();
+			scanf("%c", &c);
+			fill_canvas(canvas, c);
+			break;
+		case 10:
+			printf("%s[%lu, %lu]: ", "Enter new position [0, 0] -> ", canvas->rows - 1, canvas->cols - 1);
+			flush();
+			scanf("%lu, %lu", &row, &col);
+			move_to_pos(row, col, turtle, canvas);
+			break;
 	}
 }
 
-// TODO : Add capability to clear floor
 // TODO : Add capability to change floor size
 // TODO : Add capability to change pen character
 // TODO : Add capability to write floor to file
