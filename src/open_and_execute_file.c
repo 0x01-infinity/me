@@ -19,9 +19,10 @@ void open_and_exec_file(char *filename)
 	while (command != 1111)
 	{
 		if (command <= 6)
-			execute_command_no_stream(command, turtle, canvas);
+			exec_command_no_stream(command, turtle, canvas);
 		else
-			execute_command_file(command, input, turtle, canvas);
+			exec_command_file(command, input, turtle, canvas);
+
 		print_pos(turtle->pos, turtle->direction);
 		fscanf(input, "%lu", &command);
 	}

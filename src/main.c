@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		execute_commands_stdin();
+		read_and_exec_stdin();
 	}
 
 	return (0);

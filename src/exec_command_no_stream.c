@@ -1,6 +1,6 @@
 #include "main.h"
 
-void execute_command_no_stream(size_t command, turtle_t *turtle, canvas_t *canvas)
+void exec_command_no_stream(size_t command, turtle_t *turtle, canvas_t *canvas)
 {
 	switch (command)
 	{

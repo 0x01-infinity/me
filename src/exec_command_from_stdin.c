@@ -1,9 +1,9 @@
 #include "main.h"
 
-void executeCommand(size_t command, turtle_t *turtle, canvas_t *canvas)
+void exec_command_stdin(size_t command, turtle_t *turtle, canvas_t *canvas)
 {
 	size_t num, row, col;
-	char c, filename[11];
+	char c, filename[31];
 
 	switch (command)
 	{
@@ -25,12 +25,12 @@ void executeCommand(size_t command, turtle_t *turtle, canvas_t *canvas)
 		break;
 	case 10:
 		printf("%s", "Enter filename to save canvas: ");
-        	scanf("%10s", filename);
+        	scanf("%30s", filename);
 		write_canvas(canvas, filename);
 		break;
 	case 11:
 		printf("Enter file to load: ");
-		scanf("%10s", filename);
+		scanf("%30s", filename);
 		load_new_canvas(&canvas, filename);
 		break;
 	}

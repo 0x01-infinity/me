@@ -78,7 +78,7 @@ void fill_canvas(canvas_t *canvas, char c)
 
 void clear_canvas(canvas_t *canvas)
 {
-	fill_canvas(canvas, '\0');
+	fill_canvas(canvas, ' ');
 }
 
 void destroy_canvas(canvas_t *canvas)

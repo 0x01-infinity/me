@@ -1,14 +1,14 @@
 #include "main.h"
 
-void execute_command_file(size_t command, FILE *input, turtle_t *turtle, canvas_t *canvas)
+void exec_command_file(size_t command, FILE *input, turtle_t *turtle, canvas_t *canvas)
 {
 	size_t num, row, col;
-	char c, filename[11];
+	char c, filename[31];
 
 	switch (command)
 	{
 	case 7:
-		fscanf(input, ",%lu", &num);
+		fscanf(input, "-%lu", &num);
 		move(num, turtle, canvas);
 		break;
 	case 8:
@@ -20,11 +20,11 @@ void execute_command_file(size_t command, FILE *input, turtle_t *turtle, canvas_
 		move_to_pos(row, col, turtle, canvas);
 		break;
 	case 10:
-                fscanf(input, "%10s", filename);
+                fscanf(input, "%30s", filename);
 	        write_canvas(canvas, filename);
 		break;
 	case 11:
-                fscanf(input, "%10s", filename);
+                fscanf(input, "%30s", filename);
 		load_new_canvas(&canvas, filename);
 		break;
 	}

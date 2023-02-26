@@ -3,7 +3,7 @@
 void get_turtle(turtle_t **turtle, canvas_t *canvas);
 void get_canvas(canvas_t **canvas);
 
-void startup(canvas_t **canvas, turtle_t **turtle)
+void startup_from_stdin(canvas_t **canvas, turtle_t **turtle)
 {
 	get_canvas(canvas);
 	if (!*canvas)
