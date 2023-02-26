@@ -1,7 +1,3 @@
-#include <limits.h>
-#include <errno.h>
-
-#include "canvas.h"
 #include "main.h"
 
 size_t unsigned_sub(size_t a, size_t b)

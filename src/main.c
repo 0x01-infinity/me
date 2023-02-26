@@ -1,28 +1,15 @@
 #include "main.h"
-#include "turtle.h"
-#include "canvas.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
-	size_t command;
-	canvas_t *canvas;
-	turtle_t *turtle;
-
-	startup(&canvas, &turtle);
-
-	print_pos(turtle->pos, turtle->direction);
-
-	scanf("%lu", &command);
-
-	while (command != 9)
+	if (argc != 1)
 	{
-		executeCommand(command, turtle, canvas);
-
-		print_pos(turtle->pos, turtle->direction);
-		scanf("%lu", &command);
+		open_and_exec_file(argv[1]);
 	}
-	free(turtle);
-	destroy_canvas(canvas);
+	else
+	{
+		execute_commands_stdin();
+	}
 
 	return (0);
 }

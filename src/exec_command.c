@@ -1,57 +1,38 @@
 #include "main.h"
-#include "turtle.h"
-#include "canvas.h"
 
 void executeCommand(size_t command, turtle_t *turtle, canvas_t *canvas)
 {
 	size_t num, row, col;
-	char c;
+	char c, filename[11];
 
 	switch (command)
 	{
-		case 0:
-			clear_canvas(canvas);
-			break;
-		case 1:
-			pen_up(turtle);
-			break;
-		case 2:
-			pen_down(turtle);
-			break;
-		case 3:
-			turn_right(turtle);
-			break;
-		case 4:
-			turn_left(turtle);
-			break;
-		case 5:
-			scanf(",%lu", &num);
-			move(num, turtle, canvas);
-			break;
-		case 6:
-			print_canvas(canvas);
-			break;
-		case 7:
-			turn_opposite(turtle);
-			break;
-		case 8:
-			printf("%s", "Enter character to fill: ");
-			flush();
-			scanf("%c", &c);
-			fill_canvas(canvas, c);
-			break;
-		case 10:
-			printf("%s[%lu, %lu]: ", "Enter new position [0, 0] -> ", canvas->rows - 1, canvas->cols - 1);
-			flush();
-			scanf("%lu, %lu", &row, &col);
-			move_to_pos(row, col, turtle, canvas);
-			break;
-		case 11:
-			write_canvas(canvas);
-			break;
-		case 12:
-			load_new_canvas(&canvas);
-			break;
+	case 7:
+		scanf(",%lu", &num);
+		move(num, turtle, canvas);
+		break;
+	case 8:
+		printf("%s", "Enter character to fill: ");
+		flush();
+		scanf("%c", &c);
+		fill_canvas(canvas, c);
+		break;
+	case 9:
+		printf("%s[%lu, %lu]: ", "Enter new position [0, 0] -> ", canvas->rows - 1, canvas->cols - 1);
+		flush();
+		scanf("%lu, %lu", &row, &col);
+		move_to_pos(row, col, turtle, canvas);
+		break;
+	case 10:
+		printf("%s", "Enter filename to save canvas: ");
+        	scanf("%10s", filename);
+		write_canvas(canvas, filename);
+		break;
+	case 11:
+		printf("Enter file to load: ");
+		scanf("%10s", filename);
+		load_new_canvas(&canvas, filename);
+		break;
 	}
 }
 

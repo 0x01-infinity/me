@@ -1,4 +1,3 @@
-#include "turtle.h"
 #include "main.h"
 
 turtle_t *new_turtle(size_t row, size_t col)

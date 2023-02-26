@@ -1,4 +1,3 @@
-#include "canvas.h"
 #include "main.h"
 
 canvas_t *new_canvas(size_t r, size_t c)
@@ -48,6 +47,7 @@ void print_canvas(canvas_t *canvas)
 {
 	size_t i, j;
 
+	puts("");
 	for (i = 0; i < canvas->rows; i++)
 	{
 		if (i == 0)
@@ -55,13 +55,14 @@ void print_canvas(canvas_t *canvas)
 			printf("%s", "   ");
 			for (j = 0; j < canvas->cols; j++)
 				printf("%2lu ", j);
-			putchar('\n');
+			puts("");
 		}
 		printf("%2lu ", i);
 		for (j = 0; j < canvas->cols; j++)
 			printf("%2c ", canvas->floor[i][j]);
-		putchar('\n');
+		puts("");
 	}
+	puts("");
 }
 
 void fill_canvas(canvas_t *canvas, char c)

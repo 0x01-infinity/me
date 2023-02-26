@@ -1,5 +1,3 @@
-
-#include "turtle.h"
 #include "main.h"
 
 void move_outwards(size_t num, PLANE plane, turtle_t *turtle, canvas_t *canvas)

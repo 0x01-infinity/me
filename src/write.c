@@ -1,15 +1,10 @@
-#include "canvas.h"
 #include "main.h"
 
-void write_canvas(canvas_t *canvas)
+void write_canvas(canvas_t *canvas, char *filename)
 {
-        char filename[11];
         size_t i, j;
 
-        printf("%s", "Enter filename to save canvas: ");
-        scanf("%10s", filename);
-
-        FILE *output = fopen(filename, "w");
+        FILE *output = fopen(filename, "w+");
         if (!output)
                 die("Failed to open file to write to");
 
@@ -21,5 +16,5 @@ void write_canvas(canvas_t *canvas)
         }
         fclose(output);
 
-        printf("%s%s\n", "Canvas successfully written to ", filename);
+        printf("%s%s\n\n", "Canvas successfully written to -> ", filename);
 }

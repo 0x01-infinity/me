@@ -1,18 +1,16 @@
-#include "canvas.h"
 #include "main.h"
 
-canvas_t *load_canvas(void)
+canvas_t *load_canvas(char *filename)
 {
 	canvas_t *_new_canvas;
-	char filename[11];
 	size_t dimensions[2];
-
-	printf("Enter file to load: ");
-	scanf("%10s", filename);
 
 	FILE *input = fopen(filename, "r");
 	if (!input)
-		die("Failed to open file");
+	{
+		perror("");
+		return (NULL);
+	}
 
 	get_size(input, dimensions);
 
@@ -25,10 +23,34 @@ canvas_t *load_canvas(void)
 	populate_canvas(input, _new_canvas);
 	fclose(input);
 
-	puts("Canvas loaded successfully.");
+	printf("%s%s", filename, " -> loaded successfully.\n\n");
 
 	print_canvas(_new_canvas);
 	return (_new_canvas);
+}
+
+void load_new_canvas(canvas_t **canvas, char *filename)
+{
+	size_t dimensions[2];
+
+	FILE *input = fopen(filename, "r");
+	if (!input)
+	{
+		perror("File couldn't be loaded");
+		return;
+	}
+
+	get_size(input, dimensions);
+	
+	_realloc_floor(*canvas, dimensions);
+
+	rewind(input);
+	populate_canvas(input, *canvas);
+	fclose(input);
+
+	printf("%s%s", filename, " -> loaded successfully.\n\n");
+
+	print_canvas(*canvas);
 }
 
 void get_size(FILE *input, size_t *dimensions)
@@ -74,31 +96,6 @@ void populate_canvas(FILE *input, canvas_t *canvas)
 			row++;
 		}
 	}
-}
-
-void load_new_canvas(canvas_t **canvas)
-{
-	char filename[11];
-	size_t dimensions[2];
-
-	printf("Enter file to load: ");
-	scanf("%10s", filename);
-
-	FILE *input = fopen(filename, "r");
-	if (!input)
-		die("Failed to open file");
-
-	get_size(input, dimensions);
-	
-	_realloc_floor(*canvas, dimensions);
-
-	rewind(input);
-	populate_canvas(input, *canvas);
-	fclose(input);
-
-	puts("Canvas loaded successfully.");
-
-	print_canvas(*canvas);
 }
 
 void _realloc_floor(canvas_t *canvas, size_t *dimensions)
