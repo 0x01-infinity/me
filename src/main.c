@@ -4,17 +4,11 @@
 
 int main(void)
 {
-	size_t command, row, col;
+	size_t command;
+	canvas_t *canvas;
+	turtle_t *turtle;
 
-	printf("%s", "Enter the size of the canvas (rows, columns): ");
-	scanf("%lu, %lu", &row, &col);
-
-	canvas_t *canvas = new_canvas(row, col);
-
-	printf("%s", "Enter the starting position of the turtle: ");
-	scanf("%lu, %lu", &row, &col);
-
-	turtle_t *turtle = new_turtle(row, col);
+	startup(&canvas, &turtle);
 
 	print_pos(turtle->pos, turtle->direction);
 

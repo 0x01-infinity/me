@@ -7,7 +7,7 @@
 #include "turtle.h"
 #include "canvas.h"
 
-
+void startup(canvas_t **canvas, turtle_t **turtle);
 void executeCommand(size_t command, turtle_t *turtle, canvas_t *canvas);
 
 size_t unsigned_sub(size_t a, size_t b);

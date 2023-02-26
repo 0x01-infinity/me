@@ -46,6 +46,12 @@ void executeCommand(size_t command, turtle_t *turtle, canvas_t *canvas)
 			scanf("%lu, %lu", &row, &col);
 			move_to_pos(row, col, turtle, canvas);
 			break;
+		case 11:
+			write_canvas(canvas);
+			break;
+		case 12:
+			load_new_canvas(&canvas);
+			break;
 	}
 }
 

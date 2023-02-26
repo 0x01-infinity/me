@@ -3,7 +3,7 @@
 
 canvas_t *new_canvas(size_t r, size_t c)
 {
-	canvas_t *canvas = malloc(sizeof(canvas));
+	canvas_t *canvas = calloc(1, sizeof(canvas_t));
 
 	if (!canvas)
 		die("Failed to allocate canvas");
@@ -18,14 +18,14 @@ canvas_t *new_canvas(size_t r, size_t c)
 char **new_floor(size_t r, size_t c)
 {
 	size_t i, j;
-	char **floor = malloc(sizeof(char *) * r);
+	char **floor = calloc(r, sizeof(char *));
 
 	if (!floor)
 		die("Failed to allocate floor");
 
 	for (i = 0; i < r; i++)
 	{
-		floor[i] = malloc(sizeof(char) * c);
+		floor[i] = calloc(c, sizeof(char));
 		if (!floor[i])
 		{
 			for (j = 0; j < i; j++)
@@ -50,9 +50,16 @@ void print_canvas(canvas_t *canvas)
 
 	for (i = 0; i < canvas->rows; i++)
 	{
+		if (i == 0)
+		{
+			printf("%s", "   ");
+			for (j = 0; j < canvas->cols; j++)
+				printf("%2lu ", j);
+			putchar('\n');
+		}
+		printf("%2lu ", i);
 		for (j = 0; j < canvas->cols; j++)
-			putchar(canvas->floor[i][j]);
-		printf("%lu", i);
+			printf("%2c ", canvas->floor[i][j]);
 		putchar('\n');
 	}
 }

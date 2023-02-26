@@ -19,8 +19,14 @@ void print_canvas(canvas_t *canvas);
 void fill_canvas(canvas_t *canvas, char c);
 void clear_canvas(canvas_t *canvas);
 
-void write_canvas(FILE *input, canvas_t *canvas);
-canvas_t *load_canvas(FILE *input);
+void write_canvas(canvas_t *canvas);
+canvas_t *load_canvas(void);
+void load_new_canvas(canvas_t **canvas);
+void _realloc_floor(canvas_t *canvas, size_t *dimensions);
+void _realloc_rows(canvas_t *canvas, size_t *size);
+void _alloc_new_rows(canvas_t *canvas, size_t *size);
+void get_size(FILE *input, size_t *dimensions);
+void populate_canvas(FILE *input, canvas_t *canvas);
 canvas_t *resize_canvas(canvas_t *canvas, size_t new_size);
 
 #endif
